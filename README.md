@@ -1,6 +1,6 @@
 # K3s Manifests for EBS Tower
 
-This repository contains **Kubernetes manifests** for your Dell Tower single-node K3s setup.  
+This repository contains **Kubernetes manifests** for your Server single-node K3s setup.  
 It includes **persistent volumes, deployments, services, monitoring stack, and ingress**.
 
 ---
@@ -49,7 +49,7 @@ Add these to `/etc/hosts` on your machine for ingress:
 
 jenkins.local portainer.local grafana.local prometheus.local kibana.local
 
-Replace `<DELL-IP>` with your Dell Tower IP.
+Replace `<SERVER-IP>` with your Server IP.
 
 ---
 
@@ -88,12 +88,12 @@ All services run with replica:1 because this is a single-node cluster. Scale rep
 Future Considerations
 	•	Scale replicas for high availability once multi-node cluster is ready.
 	•	Backup /data/k8s/ regularly for persistent data.
-	•	Add monitoring and alerting for Dell Tower resources.
+	•	Add monitoring and alerting for Server resources.
 
 ⸻
 
 Notes
-	•	NodePort services can also be accessed directly via <DELL-IP>:<nodePort>.
+	•	NodePort services can also be accessed directly via <SERVER-IP>:<nodePort>.
 	•	All PVs are mapped to /data/k8s/ for durability.
 	•	Docker runtime is used for all containers in K3s.
 
