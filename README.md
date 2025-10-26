@@ -16,8 +16,9 @@ It includes **persistent volumes, deployments, services, monitoring stack, and i
 
 ---
 
-## **Repository Structure**
+##  📁  **Repository Structure**
 
+```bash
 k3s-manifests/
 ├── README.md
 ├── namespaces/
@@ -54,9 +55,8 @@ Replace `<DELL-IP>` with your Dell Tower IP.
 
 ## **Deployment Steps**
 
-1. Apply namespace:
-
 ```bash
+1. Apply namespace:
 kubectl apply -f namespaces/
 
 2.	Apply persistent volumes and claims:
@@ -64,10 +64,13 @@ kubectl apply -f pv-pvcs/
 
 3.	Apply ConfigMaps and Secrets:
 kubectl apply -f configmaps-secrets/
+
 4.	Deploy applications:
 kubectl apply -f deployments/
+
 5.	Expose applications via NodePort:
 kubectl apply -f services/
+
 6.	Setup ingress:
 kubectl apply -f ingress/
 
