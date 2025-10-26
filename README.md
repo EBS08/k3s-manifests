@@ -75,13 +75,13 @@ kubectl apply -f services/
 kubectl apply -f ingress/
 
 Access Applications
-	•	Jenkins: http://jenkins.local
-	•	Portainer: http://portainer.local
-	•	Grafana: http://grafana.local
+	•	Jenkins: http://jenkins.ebs.corp
+	•	Portainer: http://portainer.ebs.corp
+	•	Grafana: http://grafana.ebs.monitor.corp
 	•	Default admin: admin
 	•	Default password: admin123 (stored as secret)
-	•	Prometheus: http://prometheus.local
-	•	Kibana: http://kibana.local
+	•	Prometheus: http://prometheus.ebs.monitor.corp
+	•	Kibana: http://kibana.ebs.monitor.corp
 
 All services run with replica:1 because this is a single-node cluster. Scale replicas safely after adding more nodes.
 
