@@ -47,7 +47,7 @@ k3s-manifests/
 
 Add these to `/etc/hosts` on your machine for ingress:
 
-jenkins.local portainer.local grafana.local prometheus.local kibana.local
+jenkins.ebs.corp portainer.ebs.corp grafana.ebs.monitor.corp prometheus.ebs.monitor.corp kibana.ebs.monitor.corp
 
 Replace `<SERVER-IP>` with your Server IP.
 
