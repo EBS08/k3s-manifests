@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ebs-ingress
+  namespace: ebs
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  tls:
+    - hosts:
+        - portainer.ebs.monitor.corp
+      secretName: ebs-monitor-corp-tls
+  rules:
+    - host: portainer.ebs.monitor.corp
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: portainer
+              port:
+                number: 9000
