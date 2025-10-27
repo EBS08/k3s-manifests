@@ -4,7 +4,7 @@ metadata:
   name: ebs-ingress
   namespace: ebs
   annotations:
-    kubernetes.io/ingress.class: "traefik"
+    ingressClassName: "traefik"
 spec:
   tls:
     - hosts:
