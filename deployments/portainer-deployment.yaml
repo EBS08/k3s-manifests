@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portainer
+  namespace: ebs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portainer
+  template:
+    metadata:
+      labels:
+        app: portainer
+    spec:
+      containers:
+        - name: portainer
+          image: portainer/portainer-ce:latest
+          ports:
+            - containerPort: 9000
+            - containerPort: 9443
+          volumeMounts:
+            - name: portainer-data
+              mountPath: /data
+            - name: docker-sock
+              mountPath: /var/run/docker.sock
+      volumes:
+        - name: portainer-data
+          persistentVolumeClaim:
+            claimName: portainer-pvc
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock

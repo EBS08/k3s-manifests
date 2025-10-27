@@ -47,7 +47,7 @@ k3s-manifests/
 
 Add these to `/etc/hosts` on your machine for ingress:
 
-jenkins.ebs.corp portainer.ebs.corp grafana.ebs.monitor.corp prometheus.ebs.monitor.corp kibana.ebs.monitor.corp
+jenkins.ebs.corp portainer.ebs.monitor.corp grafana.ebs.monitor.corp prometheus.ebs.monitor.corp kibana.ebs.monitor.corp
 
 Replace `<SERVER-IP>` with your Server IP.
 
@@ -75,8 +75,8 @@ kubectl apply -f services/
 kubectl apply -f ingress/
 
 Access Applications
-	•	Jenkins: http://jenkins.ebs.corp
-	•	Portainer: http://portainer.ebs.corp
+	•	Jenkins: http://jenkins.ebs.monitor.corp
+	•	Portainer: http://portainer.ebs.monitor.corp
 	•	Grafana: http://grafana.ebs.monitor.corp
 	•	Default admin: admin
 	•	Default password: admin123 (stored as secret)
