@@ -13,12 +13,26 @@ spec:
       labels:
         app: portainer
     spec:
+      serviceAccountName: portainer-sa
       containers:
         - name: portainer
           image: portainer/portainer-ce:latest
           ports:
             - containerPort: 9000
             - containerPort: 9443
+          env:
+            - name: LOG_LEVEL
+              value: INFO
+            - name: ADMIN_USER
+              valueFrom:
+                secretKeyRef:
+                  name: portainer-admin-secret
+                  key: admin-user
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: portainer-admin-secret
+                  key: admin-password
           volumeMounts:
             - name: portainer-data
               mountPath: /data
