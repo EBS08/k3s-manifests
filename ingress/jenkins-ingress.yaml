@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jenkins-ingress
+  namespace: ebs
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - jenkins.ebs.monitor.corp
+      secretName: ebs-monitor-corp-tls
+  rules:
+    - host: jenkins.ebs.monitor.corp
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jenkins
+                port:
+                  number: 8080
