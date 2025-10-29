@@ -10,7 +10,8 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /data/k8s/jenkins
-  storageClassName: "" 
+  storageClassName: ""
+  persistentVolumeReclaimPolicy: Retain 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
