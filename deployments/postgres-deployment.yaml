@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: postgres
   namespace: ebs
+  labels:
+    app: postgres
 spec:
   replicas: 1
   selector:
@@ -35,20 +37,33 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: POSTGRES_DB
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
               subPath: postgres
           livenessProbe:
             exec:
-              command: ["pg_isready", "-U", "ebsadmin"]
+              command: ["pg_isready", "-U", "ebsadmin", "-h", "localhost"]
             initialDelaySeconds: 30
             periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 6
           readinessProbe:
             exec:
-              command: ["pg_isready", "-U", "ebsadmin"]
+              command: ["pg_isready", "-U", "ebsadmin", "-h", "localhost"]
             initialDelaySeconds: 10
             periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
       volumes:
         - name: postgres-data
           persistentVolumeClaim:
