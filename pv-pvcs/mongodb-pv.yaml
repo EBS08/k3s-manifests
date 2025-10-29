@@ -5,11 +5,13 @@ metadata:
   namespace: ebs
 spec:
   capacity:
-    storage: 10Gi
+    storage: 20Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
     path: /data/k8s/mongodb
+  storageClassName: ""
+  persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -21,4 +23,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 20Gi
+  storageClassName: ""
