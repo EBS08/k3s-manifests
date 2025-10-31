@@ -1,16 +1,10 @@
-# ingress/prometheus-ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: prometheus-ingress
   namespace: ebs
-  annotations:
-    kubernetes.io/ingress.class: "traefik"
 spec:
-  tls:
-    - hosts:
-        - prometheus.ebs.monitor.corp
-      secretName: ebs-monitor-corp-tls
+  ingressClassName: traefik
   rules:
     - host: prometheus.ebs.monitor.corp
       http:
@@ -22,3 +16,7 @@ spec:
               name: prometheus
               port:
                 number: 9090
+  tls:
+    - hosts:
+        - prometheus.ebs.monitor.corp
+      secretName: ebs-monitor-corp-tls
