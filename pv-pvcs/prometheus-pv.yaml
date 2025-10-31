@@ -10,7 +10,7 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /data/k8s/prometheus
-    storageClassName: ""
+  storageClassName: ""
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
