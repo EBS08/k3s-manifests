@@ -3,10 +3,13 @@ kind: Service
 metadata:
   name: prometheus
   namespace: ebs
+  labels:
+    app: prometheus
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: prometheus
   ports:
-    - protocol: TCP
-      port: 
+    - name: http
+      port: 9090
+      targetPort: 9090
