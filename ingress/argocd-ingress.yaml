@@ -11,7 +11,7 @@ spec:
   tls:
     - hosts:
         - argocd.ebs.monitor.corp
-      secretName: argocd-tls  # <-- optional, only if you have TLS certificate
+      secretName: argocd-tls
   rules:
     - host: argocd.ebs.monitor.corp
       http:
