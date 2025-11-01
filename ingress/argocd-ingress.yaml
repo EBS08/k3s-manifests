@@ -4,13 +4,14 @@ metadata:
   name: argocd-ingress
   namespace: argocd
   annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
         - argocd.ebs.monitor.corp
-      secretName: argocd-tls
+      secretName: argocd-tls  # <-- optional, only if you have TLS certificate
   rules:
     - host: argocd.ebs.monitor.corp
       http:
